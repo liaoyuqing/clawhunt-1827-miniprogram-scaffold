@@ -1,0 +1,63 @@
+/* 通用原子样式：页面骨架共用，避免每个页面重复写。 */
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--sp-3);
+  background-color: var(--color-bg-page);
+}
+
+.page__title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: var(--sp-1);
+}
+
+.page__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--sp-4);
+}
+
+.card {
+  background-color: var(--color-bg-container);
+  border-radius: var(--radius-md);
+  padding: var(--sp-3);
+  margin-bottom: var(--sp-3);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.card__label {
+  font-size: var(--font-size-base);
+  color: var(--color-text-primary);
+}
+
+.card__hint {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--sp-1);
+}
+
+.gap-2 {
+  height: var(--sp-2);
+}
+
+.gap-4 {
+  height: var(--sp-4);
+}
+
+.text-primary {
+  color: var(--color-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-sm {
+  font-size: var(--font-size-sm);
+}
+
+.text-center {
+  text-align: center;
+}

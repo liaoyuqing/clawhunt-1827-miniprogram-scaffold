@@ -1,0 +1,7 @@
+node_modules/
+miniprogram/miniprogram_npm/
+miniprogram/config/env.ts
+coverage/
+shots/
+logs/
+*.png

@@ -1,0 +1,18 @@
+# app.json 结构断言结果
+
+断言文件：miniprogram/app.json
+断言项：11 条，失败 0 条
+
+- [PASS] tabBar.list 长度为 5 —— 实际 5 项
+- [PASS] tabBar 路径集合与预期一致 —— 实际 ["pages/home/index","pages/resource/index","pages/event/index","pages/academy/index","pages/mine/index"]
+- [PASS] 每个 tab 都有中文标题 —— 标题 ["首页","商机","活动","学院","我的"]
+- [PASS] 存在两个分包 —— 实际 2 个
+- [PASS] 分包 root 为 pkg-resource 与 pkg-member —— 实际 ["pkg-resource","pkg-member"]
+- [PASS] 每个分包至少注册 1 个页面 —— pkg-resource:3 页, pkg-member:2 页
+- [PASS] lazyCodeLoading 为 requiredComponents —— 实际 requiredComponents
+- [PASS] 分包目录存在 pkg-resource —— pkg-resource
+- [PASS] 分包目录存在 pkg-member —— pkg-member
+- [PASS] 所有页面四件套（wxml/wxss/json/ts）齐全 —— 全部存在
+- [PASS] app.json 不含任何 http(s) 外链 —— 
+
+结论：全部断言通过。

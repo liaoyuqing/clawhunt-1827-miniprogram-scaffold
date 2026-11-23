@@ -1,0 +1,19 @@
+# 依赖与构建产物
+node_modules/
+coverage/
+miniprogram/miniprogram_npm/
+
+# 本地环境配置（含真实密钥，永不入库）
+miniprogram/config/env.ts
+
+# 临时目录
+_probe/
+_devtools_probe/
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志：logs/*.txt 是证据文件，需要入库；*.log 是临时日志
+*.log
+!logs/*.txt

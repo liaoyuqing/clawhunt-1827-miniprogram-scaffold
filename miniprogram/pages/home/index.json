@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "t-button": "../../miniprogram_npm/tdesign-miniprogram/button/button"
+  }
+}

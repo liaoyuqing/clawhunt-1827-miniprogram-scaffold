@@ -1,0 +1,50 @@
+/* ==========================================================================
+ * 主题变量（设计 token）
+ * 约定：间距/圆角一律取 8 的倍数，单位 rpx（750 设计稿宽度）。
+ * 改主题只改这一个文件，页面与组件全部走 var()。
+ * ========================================================================== */
+page {
+  /* 主色：品牌蓝 */
+  --color-primary: #0052d9;
+  --color-primary-hover: #366ef4;
+  --color-primary-active: #0034b5;
+  --color-primary-light: #e8f0fe;
+
+  /* 辅助色：成功 / 警告 / 错误 / 中性 */
+  --color-success: #2ba471;
+  --color-warning: #e37318;
+  --color-error: #d54941;
+  --color-info: #0052d9;
+
+  /* 文本与背景 */
+  --color-text-primary: rgba(0, 0, 0, 0.9);
+  --color-text-secondary: rgba(0, 0, 0, 0.6);
+  --color-text-placeholder: rgba(0, 0, 0, 0.4);
+  --color-bg-page: #f2f3f5;
+  --color-bg-container: #ffffff;
+  --color-border: #e7e7e7;
+
+  /* 圆角：全部 8 的倍数 */
+  --radius-sm: 8rpx;
+  --radius-md: 16rpx;
+  --radius-lg: 24rpx;
+  --radius-pill: 48rpx;
+
+  /* 间距刻度：--sp-N = N * 8rpx */
+  --sp-1: 8rpx;
+  --sp-2: 16rpx;
+  --sp-3: 24rpx;
+  --sp-4: 32rpx;
+  --sp-5: 40rpx;
+  --sp-6: 48rpx;
+  --sp-7: 56rpx;
+  --sp-8: 64rpx;
+
+  /* 字号 */
+  --font-size-sm: 24rpx;
+  --font-size-base: 28rpx;
+  --font-size-lg: 32rpx;
+  --font-size-xl: 40rpx;
+  --font-family-base:
+    -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', sans-serif;
+}

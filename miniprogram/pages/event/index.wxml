@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="page__title">活动</view>
+  <view class="page__subtitle">会员空间 · 活动占位页</view>
+  <view class="card">
+    <view class="card__label">本页为工程骨架的占位空页</view>
+    <view class="card__hint"
+      >页面结构（wxml / wxss / json / ts）已就位，业务内容由后续工单填充。</view
+    >
+  </view>
+</view>

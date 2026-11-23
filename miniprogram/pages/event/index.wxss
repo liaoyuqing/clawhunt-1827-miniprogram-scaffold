@@ -1,0 +1,4 @@
+/* 活动 tab 页面私有样式；通用样式在 styles/common.wxss。 */
+.page {
+  padding-bottom: var(--sp-8);
+}

@@ -1,0 +1,10 @@
+<view class="page">
+  <view class="page__title">资料维护</view>
+  <view class="page__subtitle">分包 pkg-member · 资料维护占位页</view>
+  <view class="card">
+    <view class="card__label">分包页面骨架</view>
+    <view class="card__hint"
+      >按需加载（lazyCodeLoading=requiredComponents），只在进入该分包时下载。</view
+    >
+  </view>
+</view>

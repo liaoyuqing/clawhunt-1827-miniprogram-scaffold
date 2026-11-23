@@ -1,0 +1,4 @@
+
+> clawhunt-1827-miniprogram-scaffold@1.0.0 lint
+> eslint . --ext .ts,.js,.mjs --max-warnings 0
+

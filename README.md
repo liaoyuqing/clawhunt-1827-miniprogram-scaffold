@@ -61,7 +61,7 @@ shots/                               # wxml/wxss 静态预览图（非开发者�
 
 ## 四、环境变量与密钥
 
-小程序端没有 `process.env`，所以配置一律走 **`wx.getExtConfigSync()` 注入**（第三方平台 / CI 常用 ext.json），本地开发则复制 `miniprogram/config/env.example.ts` 为 `miniprogram/config/env.ts`（该文件已被 `.gitignore` 排除，**真实密钥永远不进仓库**）。
+小程序端没有 `process.env`，所以配置一律走 **`wx.getExtConfigSync()` 注入**：微信开发者工具自动读取项目根目录的 `ext.json`，第三方平台与 CI 则通过平台配置注入同样的键名。`miniprogram/config/env.ts` 入库，但**只有占位值**（真实 appid / 域名 / token 只允许出现在本机配置或 CI 环境变量里，永远不进仓库）。
 
 | 注入键             | 含义            | 默认值                                                  |
 | ------------------ | --------------- | ------------------------------------------------------- |

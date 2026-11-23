@@ -1,7 +1,18 @@
-// 复制为 config/env.ts 后填写本地值；config/env.ts 已在 .gitignore 中，不会进入仓库。
-// 真实密钥、appid、生产域名只允许放在本文件或其等价的环境注入流程中。
-export const LOCAL_OVERRIDES = {
-  apiBaseUrl: 'http://127.0.0.1:8080',
-  mockEnabled: true,
-  appId: 'touristappid',
+/**
+ * 环境注入示例（供第三方平台 / CI 参考）。
+ *
+ * 微信开发者工具会自动读取项目根目录的 ext.json（见 ext.json），
+ * 第三方平台与 CI 则通过平台的 ext 配置注入同样的键名。
+ *
+ * 键名与 miniprogram/config/env.ts 的 EXT_KEYS 一一对应：
+ *   env_api_base_url  接口基地址（占位 https://api.example.invalid）
+ *   env_mock_enabled  是否走本地 mock（默认 true）
+ *   env_app_id        小程序 appid（占位 touristappid）
+ *
+ * 真实 appid / 域名 / token 只允许出现在本机配置或 CI 环境里，仓库内一律占位。
+ */
+export const ENV_EXAMPLE = {
+  env_api_base_url: 'https://api.example.invalid',
+  env_mock_enabled: true,
+  env_app_id: 'touristappid',
 };

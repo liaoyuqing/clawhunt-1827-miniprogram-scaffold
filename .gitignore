@@ -3,9 +3,6 @@ node_modules/
 coverage/
 miniprogram/miniprogram_npm/
 
-# 本地环境配置（含真实密钥，永不入库）
-miniprogram/config/env.ts
-
 # 临时目录
 _probe/
 _devtools_probe/

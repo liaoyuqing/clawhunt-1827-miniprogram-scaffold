@@ -1,0 +1,6 @@
+{
+  "env_api_base_url": "https://api.example.invalid",
+  "env_mock_enabled": true,
+  "env_app_id": "touristappid",
+  "_comment": "环境注入占位文件。微信开发者工具会自动把项目根目录的 ext.json 读进 wx.getExtConfigSync()。真实值由买家在本机或 CI 覆盖，不入库。"
+}

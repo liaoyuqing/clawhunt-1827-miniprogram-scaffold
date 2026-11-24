@@ -139,6 +139,13 @@ shots/                               # wxml/wxss 静态预览图（非开发者�
   模拟器始终显示工具欢迎页，**没有进入真实首页**。缺真实 appid 且无法登录，这一项在本机不可得，不做伪造。
   拿到测试号 appid 后按第五节导入即可补齐 5 个 tab 的运行截图。
 
+**2026-11-24 追加的两条实测（都不改变上面的结论）**
+
+- 把 `libVersion` 从 `3.0.0`（本机未缓存该版本）改成已缓存的 `3.17.5` 后重开工程：工程照旧加载成功、
+  `CompileCache` 照旧枚举 10 个页面，但 `appservice webview loadstop` 与 `simulator launch success` 仍然**都没有出现**，
+  模拟器仍是欢迎页。所以先前卡的环节不是基础库版本没对上（`WeappVendor` 里只缓存了 3.17.2–3.17.6，没有 3.0.0）。
+- 在工具里手动按「工具 → 编译」（等价 `Ctrl+R`）：日志出现新的 `simulator app before compile` / `simulator app compile`，
+  说明编译动作本身被触发并进入模拟器编译阶段，但没有一条走到 `loadstop`。
 **顺带修复的工程缺陷**：`project.config.json` 的 `editorSetting.tabIndent` 原写 `"space"`，工具校验只接受
 `auto` / `insertSpaces` / `tab`，原值触发 `getAppJSON error` 导致整包拒绝加载；已改为 `"insertSpaces"`。
 

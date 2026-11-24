@@ -1,0 +1,32 @@
+# AC2 终端输出（三条命令 + 退出码，2026-11-24 本机实测）
+# 机器: Windows / Node v26.13.1 / npm 11.20.0
+
+$ npm run lint
+
+> clawhunt-1827-miniprogram-scaffold@1.0.0 lint
+> eslint . --ext .ts,.js,.mjs --max-warnings 0
+[exit code: 0]
+
+$ npm run typecheck
+
+> clawhunt-1827-miniprogram-scaffold@1.0.0 typecheck
+> tsc --noEmit
+[exit code: 0]
+
+$ npm run test
+
+> clawhunt-1827-miniprogram-scaffold@1.0.0 test
+> jest --ci --runInBand
+
+[build-npm] tdesign-miniprogram@1.18.0 → miniprogram/miniprogram_npm/tdesign-miniprogram
+[build-npm] 产物文件数 1191，总字节 1533408
+PASS tests/pages/tabs.spec.ts
+PASS tests/components/hello.spec.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        1.672 s, estimated 3 s
+Ran all test suites.
+[exit code: 0]
+

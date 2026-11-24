@@ -127,6 +127,7 @@ shots/                               # wxml/wxss 静态预览图（非开发者�
   `CompileCache` 逐个读到 app.json 的 **5 个 tab 页**与 **2 个分包共 10 个页面**，并 `[createAppService]` 建立 appservice 容器；
 - 用工具自带的同一套编译器（`resources/app.asar.unpacked/node_modules/wcc-exec/`）对全部页面编译：
   `wcc.exe -d` **11/11** 个 wxml 全部 `exit=0`（产物 40182–40612 字节），`wcsc.exe` **14/14** 个 wxss 全部 `exit=0`；
+- AC2 的三条命令与退出码在同一台机器上重跑并连退出码一起记录：[`logs/ac2-terminal.txt`](logs/ac2-terminal.txt)（`npm run lint` / `npm run typecheck` / `npm run test` 各自 `[exit code: 0]`，Node v26.13.1 / npm 11.20.0）；
 - 逐条记录见 [`logs/devtools-compile.txt`](logs/devtools-compile.txt)，导入与构建过程见 [`logs/devtools-import.txt`](logs/devtools-import.txt)，
   界面截图见 [`shots/devtools/`](shots/devtools/)（工程已加载 / 信任弹窗 / 工具→编译菜单）。
 

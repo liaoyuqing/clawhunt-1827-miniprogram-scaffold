@@ -117,6 +117,30 @@ shots/                               # wxml/wxss 静态预览图（非开发者�
 | `npm run verify:sdk`    | 境外统计/埋点/崩溃 SDK 扫描：依赖包名 + 境外域名文本 + app.json 插件挂载点       | `logs/check-no-tracking-sdk.txt`              |
 | `npm run preview:shots` | 由 wxml/wxss 生成静态预览图                                                      | `shots/tabs/*.png`、`shots/subpackages/*.png` |
 
-## 十、许可
+## 十、微信开发者工具实测记录（2026-11-24，本机）
+
+工具版本 **Stable 2.02.2608080**，工程 appid 为占位 `touristappid`，本机未登录。实测结论分两部分：
+
+**工程导入与编译（成功）**
+
+- 以 `微信开发者工具.exe --project <仓库根>` 启动后，工具日志打印 `[backend initEnv] project ready, projectpath=...`，
+  `CompileCache` 逐个读到 app.json 的 **5 个 tab 页**与 **2 个分包共 10 个页面**，并 `[createAppService]` 建立 appservice 容器；
+- 用工具自带的同一套编译器（`resources/app.asar.unpacked/node_modules/wcc-exec/`）对全部页面编译：
+  `wcc.exe -d` **11/11** 个 wxml 全部 `exit=0`（产物 40182–40612 字节），`wcsc.exe` **14/14** 个 wxss 全部 `exit=0`；
+- 逐条记录见 [`logs/devtools-compile.txt`](logs/devtools-compile.txt)，导入与构建过程见 [`logs/devtools-import.txt`](logs/devtools-import.txt)，
+  界面截图见 [`shots/devtools/`](shots/devtools/)（工程已加载 / 信任弹窗 / 工具→编译菜单）。
+
+**模拟器运行截图（未能产出）**
+
+- 工具未登录，模拟器停在「未登录」二维码弹窗；appid 为 `touristappid` 时工具日志明确拒绝：
+  `[automation_game] formatProject reject tourist/empty appid { appid: 'touristappid', isTouristAppid: true }`；
+- 点「工具 → 编译」后日志出现 `[SimulatorService] simulator app compile`，但 appservice webview 未 `loadstop`，
+  模拟器始终显示工具欢迎页，**没有进入真实首页**。缺真实 appid 且无法登录，这一项在本机不可得，不做伪造。
+  拿到测试号 appid 后按第五节导入即可补齐 5 个 tab 的运行截图。
+
+**顺带修复的工程缺陷**：`project.config.json` 的 `editorSetting.tabIndent` 原写 `"space"`，工具校验只接受
+`auto` / `insertSpaces` / `tab`，原值触发 `getAppJSON error` 导致整包拒绝加载；已改为 `"insertSpaces"`。
+
+## 十一、许可
 
 MIT

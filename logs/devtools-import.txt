@@ -1,0 +1,40 @@
+# 微信开发者工具导入实测记录（本机，2026-11-24）
+
+## 环境
+- 工具：微信开发者工具 Stable 2.02.2608080（安装路径 E:\微信web开发者工具\）
+- 登录状态：cli islogin -> {"login":false}（本机无法扫码登录，无真实 appid）
+- 项目 appid：touristappid（占位，游客模式）
+- 基础库：工程写 3.0.0；本机仅缓存 3.17.2 / 3.17.3 / 3.17.4 / 3.17.5 / 3.17.6
+
+## 一、导入与工程加载（成功）
+以 微信开发者工具.exe --project <仓库根> 启动后，工具完成工程加载并在日志中打印：
+  [BackendInitEnv] [backend initEnv] project ready, projectpath=E:\...\delivery\1827
+  [CompileCache] call executor { cacheKey: 'miniProgramCompiledAppJSON', ... }
+  [CompileCache] call executor { cacheKey: 'miniProgramCompiledPageJSON', cacheSubKey: '.../pages/home/index.json' }
+  ... 逐个页面（home / resource / event / academy / mine / pkg-resource 三页 / pkg-member 两页）全部被 CompileCache 读到
+  [NativeAppBuilderService] [createAppService] { url: 'http://127.0.0.1:60688/appservice/s0/_sessionId/simulator-app-session-s0/mainframe' }
+  [SimulatorService] onSimulatorStateChange { state: 'AppCreated', ... }
+即：工程被识别为合法小程序工程，app.json 的 5 个 tab 页与 2 个分包的 10 个页面全部被构建器枚举，
+appservice 容器被创建。左侧文件树、project.config.json、tsconfig.json 均正常加载。
+
+## 二、编译器实测（成功）
+本机无法让模拟器渲染（见第三节），因此改用工具自带的同一套编译器直接对全部页面做编译：
+  E:\微信web开发者工具\resources\app.asar.unpacked\node_modules\wcc-exec\wcc.exe
+  E:\微信web开发者工具\resources\app.asar.unpacked\node_modules\wcc-exec\wcsc.exe
+逐文件结果见同目录 devtools-compile.txt：
+  WXML  wcc  -d  11 个文件（5 个 tab 页 + 2 个分包共 5 页 + 示例组件）全部 exit=0，产物 40182–40612 字节
+  WXSS  wcsc    14 个文件（app.wxss + 12 个页面/组件样式 + 2 个 styles/*.wxss）全部 exit=0
+  app.wxss 的三个 @import（styles/theme.wxss、styles/common.wxss）在把被导入文件一并作为参数传入后合并成功，产物 2270 字节。
+
+## 三、模拟器渲染未能完成的原因（未完成，如实记录）
+1. 工程 appid 为占位 touristappid，工具日志打印：
+   [automation_game] formatProject reject tourist/empty appid { appid: 'touristappid', isTouristAppid: true }
+2. 工具处于未登录状态，模拟器右侧停在「未登录」二维码弹窗，主区域为空白占位页（工具自带的欢迎页）；
+   点「工具 → 编译」后日志出现 [SimulatorService] simulator app compile，但 appservice webview 未 loadstop，
+   模拟器一直显示欢迎文案，无法进入真实首页。
+3. 期间定位并修复了工程侧一个真实缺陷：project.config.json 的 editorSetting.tabIndent 写成 "space"，
+   工具校验要求 auto/insertSpaces/tab，原值导致 [BackendInitEnv] getAppJSON error 而整包拒绝加载；已改为 "insertSpaces"。
+
+## 四、结论
+- 工程可被微信开发者工具导入、识别、枚举全部页面、构建 appservice，且全部 wxml/wxss 通过工具自带编译器编译（exit=0）。
+- 5 个 tab 在模拟器里的运行截图无法在本机产出：缺真实 appid 且工具无法登录。此项不做伪造。

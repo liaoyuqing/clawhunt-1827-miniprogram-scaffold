@@ -1,0 +1,38 @@
+# 微信开发者工具内置编译器对 1827 工程的实际编译结果
+# 编译器来源: E:\微信web开发者工具\resources\app.asar.unpacked\node_modules\wcc-exec\
+#   wcc.exe  -- Wechat WXML Compiler core v0.5vv_20211229_syb_scopedata / cli 20230804
+#   wcsc.exe -- WeChat Stylesheet Compiler v0.4me_20200724_db
+# 工作目录: miniprogram/  运行方式: 逐个页面调用，记录退出码与产物字节数
+
+## WXML (wcc -d)
+OK  wcc -d components\hello\index.wxml  exit=0 out_bytes=40182
+OK  wcc -d pages\academy\index.wxml  exit=0 out_bytes=40460
+OK  wcc -d pages\event\index.wxml  exit=0 out_bytes=40446
+OK  wcc -d pages\home\index.wxml  exit=0 out_bytes=40800
+OK  wcc -d pages\mine\index.wxml  exit=0 out_bytes=40439
+OK  wcc -d pages\resource\index.wxml  exit=0 out_bytes=40446
+OK  wcc -d pkg-member\pages\profile\index.wxml  exit=0 out_bytes=40575
+OK  wcc -d pkg-member\pages\verify\index.wxml  exit=0 out_bytes=40568
+OK  wcc -d pkg-resource\pages\detail\index.wxml  exit=0 out_bytes=40584
+OK  wcc -d pkg-resource\pages\my-publish\index.wxml  exit=0 out_bytes=40612
+OK  wcc -d pkg-resource\pages\publish\index.wxml  exit=0 out_bytes=40591
+SUBTOTAL WXML: ok=11 fail=0
+
+## WXSS (wcsc)
+OK  wcsc app.wxss styles/theme.wxss styles/common.wxss  exit=0 out_bytes=2270
+OK  wcsc components\hello\index.wxss  exit=0 out_bytes=466
+OK  wcsc pages\academy\index.wxss  exit=0 out_bytes=54
+OK  wcsc pages\event\index.wxss  exit=0 out_bytes=54
+OK  wcsc pages\home\index.wxss  exit=0 out_bytes=54
+OK  wcsc pages\mine\index.wxss  exit=0 out_bytes=54
+OK  wcsc pages\resource\index.wxss  exit=0 out_bytes=54
+OK  wcsc pkg-member\pages\profile\index.wxss  exit=0 out_bytes=54
+OK  wcsc pkg-member\pages\verify\index.wxss  exit=0 out_bytes=54
+OK  wcsc pkg-resource\pages\detail\index.wxss  exit=0 out_bytes=54
+OK  wcsc pkg-resource\pages\my-publish\index.wxss  exit=0 out_bytes=54
+OK  wcsc pkg-resource\pages\publish\index.wxss  exit=0 out_bytes=54
+OK  wcsc styles\common.wxss  exit=0 out_bytes=1178
+OK  wcsc styles\theme.wxss  exit=0 out_bytes=936
+SUBTOTAL WXSS: ok=14 fail=0
+
+## SUMMARY  wxml=11/11 ok   wxss=14/14 ok

@@ -14,3 +14,6 @@ Thumbs.db
 # 日志：logs/*.txt 是证据文件，需要入库；*.log 是临时日志
 *.log
 !logs/*.txt
+
+# 本机私有配置：测试号 appid 与本地基础库，不入库
+project.private.config.json

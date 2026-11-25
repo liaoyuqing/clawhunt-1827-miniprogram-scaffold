@@ -1,0 +1,39 @@
+# 微信开发者工具 CLI 编译输出（compile_wxml / compile_wxss，MCP wechatide 通道实测）
+# 采集时间: 2026-11-25T14:41:06.850Z  →  2026-11-25T14:42:11.255Z
+# 工程: E:\AI接单\Clawhunt\delivery\1827
+# 开发者工具: Stable 2.02.2608080   基础库: 3.17.5   模拟器: iPhone 12/13 (Pro)
+# 前置: 已先执行「工具 → 构建 npm」，build_npm 返回 {"cost":7672,"warnings":[]}
+# 说明: 下列为最终一遍逐文件结果，本轮无任何重试（retried=0）
+
+## WXML (compile_wxml)
+OK    components/hello/index.wxml  success=true  elapsed_ms=2907
+OK    pages/home/index.wxml  success=true  elapsed_ms=2791
+OK    pages/resource/index.wxml  success=true  elapsed_ms=2376
+OK    pages/event/index.wxml  success=true  elapsed_ms=2742
+OK    pages/academy/index.wxml  success=true  elapsed_ms=2584
+OK    pages/mine/index.wxml  success=true  elapsed_ms=2585
+OK    pkg-resource/pages/detail/index.wxml  success=true  elapsed_ms=2555
+OK    pkg-resource/pages/publish/index.wxml  success=true  elapsed_ms=2522
+OK    pkg-resource/pages/my-publish/index.wxml  success=true  elapsed_ms=2457
+OK    pkg-member/pages/verify/index.wxml  success=true  elapsed_ms=2492
+OK    pkg-member/pages/profile/index.wxml  success=true  elapsed_ms=2597
+SUBTOTAL WXML: ok=11 fail=0
+
+## WXSS (compile_wxss)
+OK    app.wxss  success=true  elapsed_ms=2666
+OK    components/hello/index.wxss  success=true  elapsed_ms=2520
+OK    pages/home/index.wxss  success=true  elapsed_ms=2649
+OK    pages/resource/index.wxss  success=true  elapsed_ms=2429
+OK    pages/event/index.wxss  success=true  elapsed_ms=2588
+OK    pages/academy/index.wxss  success=true  elapsed_ms=2747
+OK    pages/mine/index.wxss  success=true  elapsed_ms=2374
+OK    pkg-resource/pages/detail/index.wxss  success=true  elapsed_ms=2600
+OK    pkg-resource/pages/publish/index.wxss  success=true  elapsed_ms=2645
+OK    pkg-resource/pages/my-publish/index.wxss  success=true  elapsed_ms=2641
+OK    pkg-member/pages/verify/index.wxss  success=true  elapsed_ms=2433
+OK    pkg-member/pages/profile/index.wxss  success=true  elapsed_ms=2398
+OK    styles/theme.wxss  success=true  elapsed_ms=2549
+OK    styles/common.wxss  success=true  elapsed_ms=2534
+SUBTOTAL WXSS: ok=14 fail=0
+
+SUMMARY wxml=11/11  wxss=14/14

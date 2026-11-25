@@ -1,0 +1,55 @@
+# 微信开发者工具模拟器实测记录（AC1：导入后可编译运行、5 个 tab 均可打开）
+# 采集窗口: 2026-11-25T14:40:56.526Z → 2026-11-25T14:43:21.082Z（Asia/Shanghai 22:40:56 → 22:43:21）
+# 工程: E:\AI接单\Clawhunt\delivery\1827
+# 本次全程使用仓库里已入库的 project.config.json（appid=touristappid），
+# 仅 appid 由本机 project.private.config.json 覆盖为开发者工具测试号（该文件不入库）。
+
+## 运行环境（实际读取，非手写）
+开发者工具版本: Stable 2.02.2608080
+  来源: E:\微信web开发者工具\resources\app.asar.unpacked\package.json 的 "version": "2.02.2608080"
+  窗口标题同为 "微信开发者工具 Stable v2.02.2608080"
+基础库: 3.17.5（模拟器 systemInfo.SDKVersion 读回值）
+模拟器: iPhone 12/13 (Pro)（systemInfo.model）
+  platform=devtools  brand=devtools  system=iOS 10.0.1  pixelRatio=3  windowWidth=390  windowHeight=671
+仓库 project.config.json: appid=touristappid, libVersion=3.17.5, setting.packNpmManually=true,
+  setting.packNpmRelationList=[{packageJsonPath:"./package.json", miniprogramNpmDistDir:"./miniprogram/"}]
+本机 project.private.config.json: 只覆盖 appid 为测试号；本轮运行前后仓库配置字节一致（CONFIG_UNCHANGED=true）
+
+## 执行步骤（工具内实际操作顺序）
+1. project_import --project <仓库根> → {"success":true}
+2. open_project_window → 打开带模拟器的工程窗口
+3. 「工具 → 构建 npm」（build_npm）→ {"cost":7672,"warnings":[]}
+4. 逐文件编译全部 wxml/wxss（compile_wxml 11 个、compile_wxss 14 个）
+5. 「工具 → 编译」（simulator_refresh）→ {"success":true}
+6. 依次 switchTab 切到 5 个 tab，每次读当前页并截原始 PNG
+
+## 构建 npm（「工具 → 构建 npm」）
+build_npm 返回: {"cost":7672,"warnings":[]}
+  → 成功，无 warning。构建产物落在 miniprogram/miniprogram_npm/tdesign-miniprogram/（1191 个文件，不入库）
+本机多次执行的 cost 实测值分别为 6919 / 6922 / 7672 / 8628 / 8761 ms，warnings 均为 []。
+
+## 5 个 tab 的逐页记录（switchTab 后由 automation_runtime_info 读回）
+tab      | 期望路由              | 实际 route            | 页内标题 | pageId | 截图
+home     | /pages/home/index     | /pages/home/index     | 首页   | 26    | shots/ac1-tabs/home.png
+resource | /pages/resource/index | /pages/resource/index | 商机   | 27    | shots/ac1-tabs/resource.png
+event    | /pages/event/index    | /pages/event/index    | 活动   | 29    | shots/ac1-tabs/event.png
+academy  | /pages/academy/index  | /pages/academy/index  | 学院   | 30    | shots/ac1-tabs/academy.png
+mine     | /pages/mine/index     | /pages/mine/index     | 我的   | 31    | shots/ac1-tabs/mine.png
+每次 automation_navigate 均返回 {"success":true}；5 个 route 与 app.json 的 tabBar 配置逐条一致。
+
+## console 检查
+get_simulator_console --command "grep -n -i -E \"error|exception|fail|unhandled\"" → ""
+get_simulator_console --command "wc -l" → ""
+两处都是空结果：既没有任何 error/exception/fail 级记录，也没有可导出的日志行。
+
+## 截图文件清单（原始 PNG，optimize=false 未转 JPEG）
+全部 423x914，SHA256 为入库前实测值：
+home.png       903d93d158df1703d3e7d502f9149d6133ffe140ec811da678208add051543a2  27880 bytes
+resource.png   ac3c1d34c87b8ce8fa3434c8666026215a1fa3e5af5984e447dec1dd362e97ca  26298 bytes
+event.png      c8f6b2d9fbc18e706977489e5eb21e87118c6bdb3fb501eb5d133c05062e30da  26512 bytes
+academy.png    1ddd1c72e99c17f52d7055e4aec6633d4c000ceba0db7686edbcaca722b34181  26149 bytes
+mine.png       f9ab95828c5390de398c0e65a8edf2f5505b89088d80361d121bfec1e1ed121d  26577 bytes
+
+## 编译输出
+同一次链路里逐个调用的 compile_wxml / compile_wxss 结果见 logs/ac1-devtools-compile.txt：
+wxml 11/11 success、wxss 14/14 success，本轮 retried=0。

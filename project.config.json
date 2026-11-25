@@ -5,7 +5,7 @@
   "compileType": "miniprogram",
   "appid": "touristappid",
   "projectname": "clawhunt-1827-miniprogram-scaffold",
-  "libVersion": "3.0.0",
+  "libVersion": "3.17.5",
   "setting": {
     "urlCheck": false,
     "es6": true,
@@ -14,8 +14,13 @@
     "minified": true,
     "coverView": true,
     "showShadowRootInWxmlPanel": true,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./miniprogram/"
+      }
+    ],
     "nodeModules": true,
     "useCompilerPlugins": [
       "typescript"

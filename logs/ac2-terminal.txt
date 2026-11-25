@@ -30,3 +30,31 @@ Time:        1.672 s, estimated 3 s
 Ran all test suites.
 [exit code: 0]
 
+# ---- 2026-11-25 v3 复验（本轮改动只涉及 README / project.config.json / .gitignore / logs / shots，未动 miniprogram 与 tests）----
+# 采集时间: 2026-11-25（本机，Node v26.13.1 / npm 11.20.0）
+
+$ npm run lint
+> clawhunt-1827-miniprogram-scaffold@1.0.0 lint
+> eslint . --ext .ts,.js,.mjs --max-warnings 0
+[exit code: 0]  elapsed_ms=3692
+
+$ npm run typecheck
+> clawhunt-1827-miniprogram-scaffold@1.0.0 typecheck
+> tsc --noEmit
+[exit code: 0]  elapsed_ms=2453
+
+$ npm run test
+> clawhunt-1827-miniprogram-scaffold@1.0.0 test
+> jest --ci --runInBand
+
+[build-npm] tdesign-miniprogram@1.18.0 → miniprogram/miniprogram_npm/tdesign-miniprogram
+[build-npm] 产物文件数 1191，总字节 1533408
+PASS tests/pages/tabs.spec.ts
+PASS tests/components/hello.spec.ts
+
+Test Suites: 2 passed, 2 total
+Tests:       11 passed, 11 total
+Snapshots:   0 total
+Time:        3.966 s
+Ran all test suites.
+[exit code: 0]  elapsed_ms=7654
